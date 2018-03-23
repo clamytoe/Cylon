@@ -2,6 +2,8 @@
 > Python object that allows you to access **next()** and **prev()** items from a list.
 
 ![Python version][python-version]
+[![Build Status][travis-image]][travis-url]
+[![BCH compliance][bch-image]][bch-url]
 [![GitHub issues][issues-image]][issues-url]
 [![GitHub forks][fork-image]][fork-url]
 [![GitHub Stars][stars-image]][stars-url]
@@ -60,6 +62,10 @@ cylon_models.prev()
 ```
 
 [python-version]:https://img.shields.io/badge/python-3.6.4-brightgreen.svg
+[travis-image]:https://travis-ci.org/clamytoe/Cylon.svg?branch=master
+[travis-url]:https://travis-ci.org/clamytoe/Cylon
+[bch-image]:https://bettercodehub.com/edge/badge/clamytoe/Cylon?branch=master
+[bch-url]:https://bettercodehub.com/
 [issues-image]:https://img.shields.io/github/issues/clamytoe/Cylon.svg
 [issues-url]:https://github.com/clamytoe/Cylon/issues
 [fork-image]:https://img.shields.io/github/forks/clamytoe/Cylon.svg
