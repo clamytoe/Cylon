@@ -16,7 +16,7 @@ Clone the project to your computer. Assuming you have a *Projects* folder:
 cd Projects
 git clone https://github.com/clamytoe/Cylon.git
 cd Cylon
-pip install -e .
+python setup.py install
 ```
 
 ## How to use
