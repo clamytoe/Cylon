@@ -1,5 +1,5 @@
 # Cylon
-> Python object that allows you to access **next()** and **prev()** items from a list..
+> Python object that allows you to access **next()** and **prev()** items from a list.
 
 ![Python version][python-version]
 [![GitHub issues][issues-image]][issues-url]
@@ -15,6 +15,8 @@ Clone the project to your computer. Assuming you have a *Projects* folder:
 ```bash
 cd Projects
 git clone https://github.com/clamytoe/Cylon.git
+cd Cylon
+pip install -e .
 ```
 
 ## How to use

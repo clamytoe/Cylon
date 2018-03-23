@@ -1,6 +1,6 @@
 import pytest
 
-from cylon import Cylon
+from cylon.cylon import Cylon
 
 
 @pytest.fixture
