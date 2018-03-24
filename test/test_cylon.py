@@ -21,6 +21,12 @@ def cylon_models():
     return Cylon(models)
 
 
+def test_empty_object():
+    cy = Cylon()
+    assert cy.count == 0
+    assert cy.current == None
+
+
 def test_cylon_object(cylon_models):
     assert isinstance(cylon_models, Cylon)
     assert repr(cylon_models) == '<Cylon items=10 index=0>'

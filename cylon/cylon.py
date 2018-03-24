@@ -1,10 +1,10 @@
-class Cylon:
+class Cylon(list):
     """Provides .next() and .prev() methods
 
     If you need to traverse your list object in either direction,
     then this is the module to use.
     """
-    def __init__(self, items):
+    def __init__(self, items=[]):
         """Initialize object with the list of items that are passed to it"""
         self.items = items
         self._index = 0
@@ -35,12 +35,12 @@ class Cylon:
     @property
     def current(self):
         """Return the current item"""
-        return self.items[self._index]
+        return self.items[self._index] if self.items else None
 
     @property
     def count(self):
         """Return number of items the object"""
-        return len(self.items)
+        return len(self.items) if self.items else 0
 
     def next(self):
         """Return the next item in the object"""
