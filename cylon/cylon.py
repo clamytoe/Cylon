@@ -1,51 +1,63 @@
-class Cylon(list):
+from collections import MutableSequence
+
+
+class Cylon(MutableSequence):
     """Provides .next() and .prev() methods
 
     If you need to traverse your list object in either direction,
     then this is the module to use.
     """
-    def __init__(self, items=[]):
+    def __init__(self, items=[], *args, **kwargs):
         """Initialize object with the list of items that are passed to it"""
-        self.items = items
-        self._index = 0
+        self.items = items if items else list(*args, **kwargs)
+        self._current = 0
+
+    def __getitem__(self, index):
+        """Return the item at the index indicated"""
+        return self.items[index]
+
+    def __setitem__(self, index, value):
+        self.items[index] = value
+
+    def __delitem__(self, index):
+        """Remove the item at the index indicated"""
+        del self.items[index]
+
+    def __len__(self):
+        """Return the length of the object"""
+        return len(self.items)
+
+    def insert(self, index, value):
+        """Insert value/object at the given index"""
+        self.items.insert(index, value)
 
     def __repr__(self):
-        return f'<Cylon items={self.count} index={self._index}>'
+        return f'<Cylon items={len(self)} index={self._current}>'
 
     def __str__(self):
         """Return currently selected item"""
-        return self.current
-
-    def __next__(self):
-        """Move index to next item and return that item"""
-        if self._index < self.count - 1:
-            self._index += 1
+        if len(self) > 0:
+            return self.items[self._current]
         else:
-            self._index = 0
-        return self.current
-
-    def __prev__(self):
-        """Move index to previous item and return that item"""
-        if self._index > 0:
-            self._index -= 1
-        else:
-            self._index = self.count - 1
-        return self.current
+            return 'empty'
 
     @property
     def current(self):
         """Return the current item"""
-        return self.items[self._index] if self.items else None
-
-    @property
-    def count(self):
-        """Return number of items the object"""
-        return len(self.items) if self.items else 0
+        return self.items[self._current] if self.items else None
 
     def next(self):
         """Return the next item in the object"""
-        return self.__next__()
+        if self._current == len(self) - 1:
+            self._current = 0
+        else:
+            self._current += 1
+        return self.items[self._current]
 
     def prev(self):
         """Return the previous item in the object"""
-        return self.__prev__()
+        if self._current == 0:
+            self._current = len(self) - 1
+        else:
+            self._current -= 1
+        return self.items[self._current]
