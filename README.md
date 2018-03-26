@@ -70,7 +70,7 @@ U-87 Cyber Combat Unit
 ```
 
 ### Accessing nearby neighbors
-I was recently made away that in the world of High Performance Computing (HPC) the concept of neighbors is called a "stencil". So that's what I called it. By default it will show the two items before and after the currently selected item.
+I was recently made aware that in the world of High Performance Computing (HPC) the concept of neighbors is called a "stencil". So that's what I called it. By default it will show the two items before and after the currently selected item.
 
 ```bash
 >>> cylon_models.stencil()
