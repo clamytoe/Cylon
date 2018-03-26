@@ -67,6 +67,43 @@ U-87 Cyber Combat Unit
 'Humanoid Cylons'
 ```
 
+### For further features review help()
+Here's a snippet of what's available:
+
+```bash
+Help on class Cylon in module cylon.cylon:
+
+class Cylon(collections.abc.MutableSequence)
+ |  Provides .next() and .prev() methods
+ |  
+ |  If you need to traverse your list object in either direction,
+ |  then this is the module to use.
+ |  
+ |  Methods defined here:
+ |  
+ |  neighbors(self, count=2)
+ |      Return a list with the before and after elements specified by count
+ |  
+ |  next(self)
+ |      Return the next item in the object
+ |  
+ |  prev(self)
+ |      Return the previous item in the object
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  current
+ |      Return the current item
+ |  
+ |  show_next
+ |      Display the next item without changing current
+ |  
+ |  show_prev
+ |      Display the previous item without changing current
+
+```
+
 [python-version]:https://img.shields.io/badge/python-3.6.4-brightgreen.svg
 [travis-image]:https://travis-ci.org/clamytoe/Cylon.svg?branch=master
 [travis-url]:https://travis-ci.org/clamytoe/Cylon

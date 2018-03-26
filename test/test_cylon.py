@@ -36,28 +36,28 @@ def test_cylon_object(cylon_models):
 
 def test_cylon_defaults(cylon_models):
     assert len(cylon_models) == 10
-    assert cylon_models._current == 0
+    assert cylon_models._index == 0
     assert cylon_models.current == 'U-87 Cyber Combat Unit'
 
 
 def test_cylon_methods(cylon_models):
     assert cylon_models.next() == 'Civilian Cylon'
-    assert cylon_models._current == 1
+    assert cylon_models._index == 1
     assert cylon_models.next() == 'Cylon War-Era Centurion'
-    assert cylon_models._current == 2
+    assert cylon_models._index == 2
     assert cylon_models.next() == 'Cython'
-    assert cylon_models._current == 3
+    assert cylon_models._index == 3
     assert cylon_models.prev() == 'Cylon War-Era Centurion'
-    assert cylon_models._current == 2
+    assert cylon_models._index == 2
 
 
 def test_cylon_boundaries(cylon_models):
     assert cylon_models.current == 'U-87 Cyber Combat Unit'
-    assert cylon_models._current == 0
+    assert cylon_models._index == 0
     assert cylon_models.prev() == 'Humanoid Cylons'
-    assert cylon_models._current == 9
+    assert cylon_models._index == 9
     assert cylon_models.next() == 'U-87 Cyber Combat Unit'
-    assert cylon_models._current == 0
+    assert cylon_models._index == 0
 
 def test_cylon_indexing(cylon_models):
     assert cylon_models[0] == 'U-87 Cyber Combat Unit'
@@ -75,3 +75,39 @@ def test_cylon_inserting():
     assert cy.items == 'a e b c'.split()
     cy.insert(3, 'd')
     assert cy.items == 'a e b d c'.split()
+
+def test_cylon_deleting(cylon_models):
+    cylon_models.pop(0)
+    assert len(cylon_models) == 9
+    del cylon_models[2]
+    assert len(cylon_models) == 8
+    cylon_models.remove('Cylon Hybrids')
+    assert len(cylon_models) == 7
+
+def test_cylon_properties(cylon_models):
+    assert cylon_models.current == 'U-87 Cyber Combat Unit'
+    assert cylon_models._index == 0
+    assert cylon_models.show_next == 'Civilian Cylon'
+    assert cylon_models._index == 0
+    assert cylon_models.show_prev == 'Humanoid Cylons'
+    assert cylon_models._index == 0
+
+def test_cylon_neighbors(cylon_models):
+    answer1 = [
+        'Cylon Hybrids', 
+        'Humanoid Cylons', 
+        'U-87 Cyber Combat Unit', 
+        'Civilian Cylon',
+        'Cylon War-Era Centurion'
+    ]
+    answer2 = [
+        'Humanoid Cylons', 
+        'U-87 Cyber Combat Unit', 
+        'Civilian Cylon'
+    ]
+    neighbors = cylon_models.neighbors()
+    two_neighbors = cylon_models.neighbors(1)
+    assert neighbors == answer1
+    assert len(neighbors) == 5
+    assert len(two_neighbors) == 3
+    assert two_neighbors == answer2
