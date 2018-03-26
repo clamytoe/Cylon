@@ -81,7 +81,7 @@ class Cylon(collections.abc.MutableSequence)
  |  
  |  Methods defined here:
  |  
- |  neighbors(self, count=2)
+ |  stencil(self, count=2)
  |      Return a list with the before and after elements specified by count
  |  
  |  next(self)

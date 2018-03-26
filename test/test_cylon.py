@@ -105,8 +105,8 @@ def test_cylon_neighbors(cylon_models):
         'U-87 Cyber Combat Unit', 
         'Civilian Cylon'
     ]
-    neighbors = cylon_models.neighbors()
-    two_neighbors = cylon_models.neighbors(1)
+    neighbors = cylon_models.stencil()
+    two_neighbors = cylon_models.stencil(1)
     assert neighbors == answer1
     assert len(neighbors) == 5
     assert len(two_neighbors) == 3

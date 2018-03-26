@@ -60,7 +60,7 @@ class Cylon(MutableSequence):
             prev = self._index - 1
         return prev
     
-    def neighbors(self, count=2):
+    def stencil(self, count=2):
         """Return a list with the before and after elements specified by count"""
         before = list(range(self._index - count, self._index))
         after = list(range(self._index, self._index + count + 1))
