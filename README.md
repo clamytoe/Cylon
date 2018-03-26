@@ -9,7 +9,9 @@
 [![GitHub Stars][stars-image]][stars-url]
 [![License][license-image]][license-url]
 
-Why Cylon? Well it was either that or KITT and Cylon just sounded cooler! For those of you not old enough, both Cylons and KITT had a light that moved left to right, just like you can access the items in this object.
+Why **Cylon**? Well it was either that or KITT and Cylon just sounded cooler! For those of you not old enough, both Cylons and KITT had a light that moved left to right, just like you can access the items in this object.
+
+Normal *list()* operations are supported as well.
 
 ## How to set it all up
 Clone the project to your computer. Assuming you have a *Projects* folder:
@@ -65,6 +67,16 @@ U-87 Cyber Combat Unit
 'U-87 Cyber Combat Unit'
 >>> cylon_models.prev()
 'Humanoid Cylons'
+```
+
+### Accessing nearby neighbors
+I was recently made away that in the world of High Performance Computing (HPC) the concept of neighbors is called a "stencil". So that's what I called it. By default it will show the two items before and after the currently selected item.
+
+```bash
+>>> cylon_models.stencil()
+['Cylon Hybrids', 'Humanoid Cylons', 'U-87 Cyber Combat Unit', 'Civilian Cylon', 'Cylon War-Era Centurion']
+>>> cylon_models.stencil(7)
+['Cython', 'Djerba Centurion', 'Modern Centurion', 'Inorganic Humanoids', 'Cylon Spacecraft', 'Cylon Hybrids', 'Humanoid Cylons', 'U-87 Cyber Combat Unit', 'Civilian Cylon', 'Cylon War-Era Centurion', 'Cython', 'Djerba Centurion', 'Modern Centurion', 'Inorganic Humanoids', 'Cylon Spacecraft']
 ```
 
 ### For further features review help()
