@@ -61,7 +61,10 @@ class Cylon(MutableSequence):
         return prev
     
     def stencil(self, count=2):
-        """Return a list with the before and after elements specified by count"""
+        """Return a list with the before and after elements 
+        
+        Count determines how many of each are displayed.
+        """
         before = list(range(self._index - count, self._index))
         after = list(range(self._index, self._index + count + 1))
         indexes = before + after
