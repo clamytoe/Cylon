@@ -25,40 +25,46 @@ python setup.py install
 For now, just put the script into your project folder and import it:
 
 ```bash
-from cylon import Cylon
-
-models = [
-    'U-87 Cyber Combat Unit',
-    'Civilian Cylon',
-    'Cylon War-Era Centurion',
-    'Cython',
-    'Djerba Centurion',
-    'Modern Centurion',
-    'Inorganic Humanoids',
-    'Cylon Spacecraft',
-    'Cylon Hybrids',
-    'Humanoid Cylons',
-]
-cylon_models = Cylon(models)
+>>> from cylon import Cylon
+>>> models = [
+...    'U-87 Cyber Combat Unit',
+...    'Civilian Cylon',
+...    'Cylon War-Era Centurion',
+...    'Cython',
+...    'Djerba Centurion',
+...    'Modern Centurion',
+...    'Inorganic Humanoids',
+...    'Cylon Spacecraft',
+...    'Cylon Hybrids',
+...    'Humanoid Cylons',
+...]
+>>> cylon_models = Cylon(models)
 ```
 
 ### Accessing current item
 ```bash
-cylon_models.current
+>>> cylon_models.current
+'U-87 Cyber Combat Unit'
 ```
 You can also print the current item by simply printing the object:
+
 ```bash
-print(cylon_models)
+>>> print(cylon_models)
+U-87 Cyber Combat Unit
 ```
 
 ### Accessing next item
 ```bash
-cylon_models.next()
+>>> cylon_models.next()
+'Civilian Cylon'
 ```
 
 ### Accessing prev item
 ```bash
-cylon_models.prev()
+>>> cylon_models.prev()
+'U-87 Cyber Combat Unit'
+>>> cylon_models.prev()
+'Humanoid Cylons'
 ```
 
 [python-version]:https://img.shields.io/badge/python-3.6.4-brightgreen.svg
