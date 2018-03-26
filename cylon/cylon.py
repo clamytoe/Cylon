@@ -33,9 +33,8 @@ class Cylon(MutableSequence):
         self.items.insert(index, value)
 
     def __repr__(self):
-        class_name = self.__class__.__name__
         info = ''.join([
-            class_name, 
+            self.__class__.__name__, 
             '(', 
             f'items={len(self)} ', 
             f'index={self._index}', 
