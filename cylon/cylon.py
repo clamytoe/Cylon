@@ -33,7 +33,15 @@ class Cylon(MutableSequence):
         self.items.insert(index, value)
 
     def __repr__(self):
-        return f'<Cylon items={len(self)} index={self._index}>'
+        class_name = self.__class__.__name__
+        info = ''.join([
+            class_name, 
+            '(', 
+            f'items={len(self)} ', 
+            f'index={self._index}', 
+            ')'
+        ])
+        return info
 
     def __str__(self):
         """Return currently selected item"""
@@ -70,11 +78,13 @@ class Cylon(MutableSequence):
         indexes = before + after
         return [self.items[i] for i in indexes]
 
+    @property
     def next(self):
         """Return the next item in the object"""
         self._index = self._next()
         return self.items[self._index]
 
+    @property
     def prev(self):
         """Return the previous item in the object"""
         self._index = self._prev()

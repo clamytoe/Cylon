@@ -57,15 +57,15 @@ U-87 Cyber Combat Unit
 
 ### Accessing next item
 ```bash
->>> cylon_models.next()
+>>> cylon_models.next
 'Civilian Cylon'
 ```
 
 ### Accessing prev item
 ```bash
->>> cylon_models.prev()
+>>> cylon_models.prev
 'U-87 Cyber Combat Unit'
->>> cylon_models.prev()
+>>> cylon_models.prev
 'Humanoid Cylons'
 ```
 
@@ -94,13 +94,9 @@ class Cylon(collections.abc.MutableSequence)
  |  Methods defined here:
  |  
  |  stencil(self, count=2)
- |      Return a list with the before and after elements specified by count
- |  
- |  next(self)
- |      Return the next item in the object
- |  
- |  prev(self)
- |      Return the previous item in the object
+ |      Return a list with the before and after elements
+ |      
+ |      Count determines how many of each are displayed.
  |  
  |  ----------------------------------------------------------------------
  |  Data descriptors defined here:
@@ -108,11 +104,19 @@ class Cylon(collections.abc.MutableSequence)
  |  current
  |      Return the current item
  |  
+ |  next
+ |      Return the next item in the object
+ |  
+ |  prev
+ |      Return the previous item in the object
+ |  
  |  show_next
  |      Display the next item without changing current
  |  
  |  show_prev
  |      Display the previous item without changing current
+ |  
+
 
 ```
 
