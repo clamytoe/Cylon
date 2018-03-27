@@ -27,7 +27,7 @@ python setup.py install
 For now, just put the script into your project folder and import it:
 
 ```bash
->>> from cylon import Cylon
+>>> from cylon import Cylon, prev
 >>> models = [
 ...    'U-87 Cyber Combat Unit',
 ...    'Civilian Cylon',
@@ -62,7 +62,7 @@ U-87 Cyber Combat Unit
 ```
 To move to the next one:
 ```bash
->>> cylon_models.next()
+>>> next(cylon_models)
 'Civilian Cylon'
 ```
 Now if you check the current item:
@@ -78,14 +78,14 @@ This one works the same way:
 'Civilian Cylon'
 >>> cylon_models.show_prev
 'U-87 Cyber Combat Unit'
->>> cylon_models.prev()
+>>> prev(cylon_models)
 'U-87 Cyber Combat Unit'
 >>> cylon_models.show_current
 'U-87 Cyber Combat Unit'
 ```
 If you happen to go past the beginning or end of the list, it simply wraps around:
 ```bash
->>> cylon_models.prev()
+>>> prev(cylon_models)
 'Humanoid Cylons'
 ```
 
@@ -110,21 +110,42 @@ Here's a snippet of what's available:
 Help on class Cylon in module cylon.cylon:
 
 class Cylon(collections.abc.MutableSequence)
- |  Provides .next() and .prev() methods
+ |  Provides next() and prev() methods to a list object
  |  
  |  If you need to traverse your list object in either direction,
  |  then this is the module to use.
  |  
  |  Methods defined here:
  |  
- |  insert(self, index, value)
- |      Insert value/object at the given index
+ |  __delitem__(self, index)
+ |      Remove the item at the index indicated
  |  
- |  next(self)
+ |  __getitem__(self, index)
+ |      Return the item at the index indicated
+ |  
+ |  __init__(self, items=[])
+ |      Initialize object with the list of items that are passed to it
+ |  
+ |  __len__(self)
+ |      Return the length of the object
+ |  
+ |  __next__(self)
  |      Return the next item in the object
  |  
- |  prev(self)
+ |  __prev__(self)
  |      Return the previous item in the object
+ |  
+ |  __repr__(self)
+ |      Return repr(self).
+ |  
+ |  __setitem__(self, index, value)
+ |      Set the value of the object at the specified index
+ |  
+ |  __str__(self)
+ |      Return currently selected item
+ |  
+ |  insert(self, index, value)
+ |      Insert value/object at the given index
  |  
  |  stencil(self, count=2)
  |      Return a list with before and after neighbors of current item
@@ -133,10 +154,10 @@ class Cylon(collections.abc.MutableSequence)
  |  
  |  ----------------------------------------------------------------------
  |  Data descriptors defined here:
- |   
+ |  
  |  show_current
  |      Return the current item
- |
+ |  
  |  show_next
  |      Display the next item without changing current
  |  

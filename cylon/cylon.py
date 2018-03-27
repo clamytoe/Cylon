@@ -2,7 +2,7 @@ from collections import MutableSequence
 
 
 class Cylon(MutableSequence):
-    """Provides .next() and .prev() methods
+    """Provides next() and prev() methods to a list object
 
     If you need to traverse your list object in either direction,
     then this is the module to use.
@@ -12,25 +12,27 @@ class Cylon(MutableSequence):
         self.items = items
         self._index = 0
 
-    def __getitem__(self, index):
-        """Return the item at the index indicated"""
-        return self.items[index]
-
-    def __setitem__(self, index, value):
-        """Set the value of the object at the specified index"""
-        self.items[index] = value
-
     def __delitem__(self, index):
         """Remove the item at the index indicated"""
         del self.items[index]
+
+    def __getitem__(self, index):
+        """Return the item at the index indicated"""
+        return self.items[index]
 
     def __len__(self):
         """Return the length of the object"""
         return len(self.items)
 
-    def insert(self, index, value):
-        """Insert value/object at the given index"""
-        self.items.insert(index, value)
+    def __next__(self):
+        """Return the next item in the object"""
+        self._index = self._next()
+        return self.items[self._index]
+
+    def __prev__(self):
+        """Return the previous item in the object"""
+        self._index = self._prev()
+        return self.items[self._index]
 
     def __repr__(self):
         info = ''.join([
@@ -42,12 +44,20 @@ class Cylon(MutableSequence):
         ])
         return info
 
+    def __setitem__(self, index, value):
+        """Set the value of the object at the specified index"""
+        self.items[index] = value
+
     def __str__(self):
         """Return currently selected item"""
         if len(self) > 0:
             return self.items[self._index]
         else:
             return 'empty'
+    
+    def _find_stop(self, stop):
+        """Helper function to wrap stencil"""
+        return stop - len(self) if stop > len(self) - 1 else stop
     
     def _next(self):
         """Helper function for next"""
@@ -66,10 +76,10 @@ class Cylon(MutableSequence):
         else:
             prev = self._index - 1
         return prev
-    
-    def _find_stop(self, stop):
-        """Helper function to wrap stencil"""
-        return stop - len(self) if stop > len(self) - 1 else stop
+
+    def insert(self, index, value):
+        """Insert value/object at the given index"""
+        self.items.insert(index, value)
 
     def stencil(self, count=2):
         """Return a list with before and after neighbors of current item 
@@ -88,16 +98,6 @@ class Cylon(MutableSequence):
 
         indexes = before + after
         return [self.items[i] for i in indexes]
-
-    def next(self):
-        """Return the next item in the object"""
-        self._index = self._next()
-        return self.items[self._index]
-
-    def prev(self):
-        """Return the previous item in the object"""
-        self._index = self._prev()
-        return self.items[self._index]
 
     @property
     def show_current(self):

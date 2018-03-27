@@ -1,6 +1,6 @@
 import pytest
 
-from cylon.cylon import Cylon
+from cylon import Cylon, prev
 
 
 @pytest.fixture
@@ -41,22 +41,22 @@ def test_cylon_defaults(cylon_models):
 
 
 def test_cylon_methods(cylon_models):
-    assert cylon_models.next() == 'Civilian Cylon'
+    assert next(cylon_models) == 'Civilian Cylon'
     assert cylon_models._index == 1
-    assert cylon_models.next() == 'Cylon War-Era Centurion'
+    assert next(cylon_models) == 'Cylon War-Era Centurion'
     assert cylon_models._index == 2
-    assert cylon_models.next() == 'Cython'
+    assert next(cylon_models) == 'Cython'
     assert cylon_models._index == 3
-    assert cylon_models.prev() == 'Cylon War-Era Centurion'
+    assert prev(cylon_models) == 'Cylon War-Era Centurion'
     assert cylon_models._index == 2
 
 
 def test_cylon_boundaries(cylon_models):
     assert cylon_models.show_current == 'U-87 Cyber Combat Unit'
     assert cylon_models._index == 0
-    assert cylon_models.prev() == 'Humanoid Cylons'
+    assert prev(cylon_models) == 'Humanoid Cylons'
     assert cylon_models._index == 9
-    assert cylon_models.next() == 'U-87 Cyber Combat Unit'
+    assert next(cylon_models) == 'U-87 Cyber Combat Unit'
     assert cylon_models._index == 0
 
 def test_cylon_indexing(cylon_models):
@@ -69,7 +69,7 @@ def test_cylon_inserting():
     cy.extend(lst)
     assert len(cy) == 3
     assert cy.show_current == 'a'
-    assert cy.next() == 'b'
+    assert next(cy) == 'b'
     cy.insert(1, 'e')
     assert len(cy) == 4
     assert cy.items == 'a e b c'.split()
