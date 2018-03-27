@@ -67,30 +67,40 @@ class Cylon(MutableSequence):
             prev = self._index - 1
         return prev
     
+    def _find_stop(self, stop):
+        """Helper function to wrap stencil"""
+        return stop - len(self) if stop > len(self) - 1 else stop
+
     def stencil(self, count=2):
-        """Return a list with the before and after elements 
+        """Return a list with before and after neighbors of current item 
         
         Count determines how many of each are displayed.
         """
+        stop = self._find_stop(self._index + count + 1)
         before = list(range(self._index - count, self._index))
-        after = list(range(self._index, self._index + count + 1))
+        
+        if stop < self._index:
+            end = list(range(self._index, len(self)))
+            front = list(range(stop))
+            after = end + front
+        else:
+            after = list(range(self._index, stop))
+
         indexes = before + after
         return [self.items[i] for i in indexes]
 
-    @property
     def next(self):
         """Return the next item in the object"""
         self._index = self._next()
         return self.items[self._index]
 
-    @property
     def prev(self):
         """Return the previous item in the object"""
         self._index = self._prev()
         return self.items[self._index]
 
     @property
-    def current(self):
+    def show_current(self):
         """Return the current item"""
         return self.items[self._index] if self.items else None
     

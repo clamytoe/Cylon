@@ -45,7 +45,7 @@ For now, just put the script into your project folder and import it:
 
 ### Accessing current item
 ```bash
->>> cylon_models.current
+>>> cylon_models.show_current
 'U-87 Cyber Combat Unit'
 ```
 You can also print the current item by simply printing the object:
@@ -57,15 +57,35 @@ U-87 Cyber Combat Unit
 
 ### Accessing next item
 ```bash
->>> cylon_models.next
+>>> cylon_models.show_next
+'Civilian Cylon'
+```
+To move to the next one:
+```bash
+>>> cylon_models.next()
+'Civilian Cylon'
+```
+Now if you check the current item:
+```bash
+>>> cylon_models.show_current
 'Civilian Cylon'
 ```
 
 ### Accessing prev item
+This one works the same way:
 ```bash
->>> cylon_models.prev
+>>> cylon_models.show_current
+'Civilian Cylon'
+>>> cylon_models.show_prev
 'U-87 Cyber Combat Unit'
->>> cylon_models.prev
+>>> cylon_models.prev()
+'U-87 Cyber Combat Unit'
+>>> cylon_models.show_current
+'U-87 Cyber Combat Unit'
+```
+If you happen to go past the beginning or end of the list, it simply wraps around:
+```bash
+>>> cylon_models.prev()
 'Humanoid Cylons'
 ```
 
@@ -93,6 +113,15 @@ class Cylon(collections.abc.MutableSequence)
  |  
  |  Methods defined here:
  |  
+ |  insert(self, index, value)
+ |      Insert value/object at the given index
+ |  
+ |  next(self)
+ |      Return the next item in the object
+ |  
+ |  prev(self)
+ |      Return the previous item in the object
+ |  
  |  stencil(self, count=2)
  |      Return a list with the before and after elements
  |      
@@ -100,24 +129,16 @@ class Cylon(collections.abc.MutableSequence)
  |  
  |  ----------------------------------------------------------------------
  |  Data descriptors defined here:
- |  
- |  current
+ |   
+ |  show_current
  |      Return the current item
- |  
- |  next
- |      Return the next item in the object
- |  
- |  prev
- |      Return the previous item in the object
- |  
+ |
  |  show_next
  |      Display the next item without changing current
  |  
  |  show_prev
  |      Display the previous item without changing current
  |  
-
-
 ```
 
 [python-version]:https://img.shields.io/badge/python-3.6.4-brightgreen.svg
