@@ -24,7 +24,7 @@ python setup.py install
 ```
 
 ## How to use
-For now, just put the script into your project folder and import it:
+After it has been installed, just use it like any other module. One thing to note is to make sure not to forget to import **prev** as well. It's not perfect, but until I can figure out how to do it without it, it'll have to be like this:
 
 ```bash
 >>> from cylon import Cylon, prev
