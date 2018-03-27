@@ -123,7 +123,7 @@ class Cylon(collections.abc.MutableSequence)
  |      Return the previous item in the object
  |  
  |  stencil(self, count=2)
- |      Return a list with the before and after elements
+ |      Return a list with before and after neighbors of current item
  |      
  |      Count determines how many of each are displayed.
  |  
