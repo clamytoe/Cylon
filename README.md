@@ -94,9 +94,13 @@ I was recently made aware that in the world of High Performance Computing (HPC) 
 
 ```bash
 >>> cylon_models.stencil()
-['Cylon Hybrids', 'Humanoid Cylons', 'U-87 Cyber Combat Unit', 'Civilian Cylon', 'Cylon War-Era Centurion']
+['Cylon Spacecraft', 'Cylon Hybrids', 'Humanoid Cylons', 'U-87 Cyber Combat Unit', 'Civilian Cylon']
+```
+You can also specify more neighbors as well:
+
+```bash
 >>> cylon_models.stencil(7)
-['Cython', 'Djerba Centurion', 'Modern Centurion', 'Inorganic Humanoids', 'Cylon Spacecraft', 'Cylon Hybrids', 'Humanoid Cylons', 'U-87 Cyber Combat Unit', 'Civilian Cylon', 'Cylon War-Era Centurion', 'Cython', 'Djerba Centurion', 'Modern Centurion', 'Inorganic Humanoids', 'Cylon Spacecraft']
+['Cylon War-Era Centurion', 'Cython', 'Djerba Centurion', 'Modern Centurion', 'Inorganic Humanoids', 'Cylon Spacecraft', 'Cylon Hybrids', 'Humanoid Cylons', 'U-87 Cyber Combat Unit', 'Civilian Cylon', 'Cylon War-Era Centurion', 'Cython', 'Djerba Centurion', 'Modern Centurion', 'Inorganic Humanoids']
 ```
 
 ### For further features review help()
