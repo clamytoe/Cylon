@@ -101,7 +101,10 @@ ENV/
 .mypy_cache/
 
 # pytest
-.pytest_cache/*
+.pytest_cache/
 
 # Visual Studio Code
-.vscode/*
+.vscode/
+
+# Pycharm
+.idea/
