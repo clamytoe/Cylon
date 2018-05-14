@@ -7,9 +7,9 @@ class Cylon(MutableSequence):
     If you need to traverse your list object in either direction,
     then this is the module to use.
     """
-    def __init__(self, items=[]):
+    def __init__(self, items=None):
         """Initialize object with the list of items that are passed to it"""
-        self.items = items
+        self.items = list() if items is None else items
         self._index = 0
 
     def __delitem__(self, index):
@@ -61,25 +61,35 @@ class Cylon(MutableSequence):
     
     def _next(self):
         """Helper function for next"""
-        next = None
         if self._index == len(self) - 1:
-            next = 0
+            next_index = 0
         else:
-            next = self._index + 1
-        return next
+            next_index = self._index + 1
+        return next_index
     
     def _prev(self):
         """Helper function for previous"""
-        prev = None
         if self._index == 0:
-            prev = len(self) - 1
+            prev_index = len(self) - 1
         else:
-            prev = self._index - 1
-        return prev
+            prev_index = self._index - 1
+        return prev_index
+
+    def current(self):
+        """Return the current item"""
+        return self.items[self._index] if self.items else None
 
     def insert(self, index, value):
         """Insert value/object at the given index"""
         self.items.insert(index, value)
+
+    def next(self):
+        """Display the next item without changing current"""
+        return self.items[self._next()]
+
+    def prev(self):
+        """Display the previous item without changing current"""
+        return self.items[self._prev()]
 
     def stencil(self, count=2):
         """Return a list with before and after neighbors of current item 
@@ -98,18 +108,3 @@ class Cylon(MutableSequence):
 
         indexes = before + after
         return [self.items[i] for i in indexes]
-
-    @property
-    def show_current(self):
-        """Return the current item"""
-        return self.items[self._index] if self.items else None
-    
-    @property
-    def show_next(self):
-        """Display the next item without changing current"""
-        return self.items[self._next()]
-    
-    @property
-    def show_prev(self):
-        """Display the previous item without changing current"""
-        return self.items[self._prev()]

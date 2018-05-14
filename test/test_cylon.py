@@ -24,7 +24,7 @@ def cylon_models():
 def test_empty_object():
     cy = Cylon()
     assert len(cy) == 0
-    assert cy.show_current == None
+    assert cy.current() is None
     assert str(cy) == 'empty'
 
 
@@ -37,7 +37,7 @@ def test_cylon_object(cylon_models):
 def test_cylon_defaults(cylon_models):
     assert len(cylon_models) == 10
     assert cylon_models._index == 0
-    assert cylon_models.show_current == 'U-87 Cyber Combat Unit'
+    assert cylon_models.current() == 'U-87 Cyber Combat Unit'
 
 
 def test_cylon_methods(cylon_models):
@@ -52,7 +52,7 @@ def test_cylon_methods(cylon_models):
 
 
 def test_cylon_boundaries(cylon_models):
-    assert cylon_models.show_current == 'U-87 Cyber Combat Unit'
+    assert cylon_models.current() == 'U-87 Cyber Combat Unit'
     assert cylon_models._index == 0
     assert prev(cylon_models) == 'Humanoid Cylons'
     assert cylon_models._index == 9
@@ -68,7 +68,7 @@ def test_cylon_inserting():
     cy = Cylon()
     cy.extend(lst)
     assert len(cy) == 3
-    assert cy.show_current == 'a'
+    assert cy.current() == 'a'
     assert next(cy) == 'b'
     cy.insert(1, 'e')
     assert len(cy) == 4
@@ -85,11 +85,11 @@ def test_cylon_deleting(cylon_models):
     assert len(cylon_models) == 7
 
 def test_cylon_properties(cylon_models):
-    assert cylon_models.show_current == 'U-87 Cyber Combat Unit'
+    assert cylon_models.current() == 'U-87 Cyber Combat Unit'
     assert cylon_models._index == 0
-    assert cylon_models.show_next == 'Civilian Cylon'
+    assert cylon_models.next() == 'Civilian Cylon'
     assert cylon_models._index == 0
-    assert cylon_models.show_prev == 'Humanoid Cylons'
+    assert cylon_models.prev() == 'Humanoid Cylons'
     assert cylon_models._index == 0
 
 def test_cylon_neighbors(cylon_models):
